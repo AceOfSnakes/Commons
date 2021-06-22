@@ -4,7 +4,6 @@ Commons::Commons() {
 
 }
 
-
 QString Commons::compilerQString() {
     QString compiler;
 #ifdef __clang_version__
