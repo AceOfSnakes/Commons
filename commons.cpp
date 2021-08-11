@@ -4,6 +4,7 @@ Commons::Commons() {
 
 }
 
+
 QString Commons::compilerQString() {
     QString compiler;
 #ifdef __clang_version__
@@ -13,15 +14,19 @@ QString Commons::compilerQString() {
 #elif defined _MSC_VER
     compiler.append("Compiler: Visual Studio");
 #if _MSC_VER >= 1929
-    compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 19)));
+  #if _MSC_FULL_VER >= 192930100
+    compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 18)));
+  #else
+    compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 18)));
+  #endif
 #elif _MSC_VER >= 1928
-#if _MSC_FULL_VER >= 192829500
+  #if _MSC_FULL_VER >= 192829500
     // once more again M$ version out of control :(
     // https://developercommunity.visualstudio.com/t/the-169-cc-compiler-still-uses-the-same-version-nu/1335194#T-N1337120
     compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 19)));
-#else
+  #else
     compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 20)));
-#endif
+  #endif
 #elif _MSC_VER < 1928
 #elif _MSC_VER >= 1920
     compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 20)));
