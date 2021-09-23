@@ -13,22 +13,24 @@ QString Commons::compilerQString() {
     compiler.append(QString().asprintf("Compiler: gcc %s", __VERSION__));
 #elif defined _MSC_VER
     compiler.append("Compiler: Visual Studio");
-#if _MSC_VER >= 1930
+#if 0    
+    /*
+     * https://docs.microsoft.com/en-us/cpp/preprocessor/predefined-macros
+     */
+#elif _MSC_VER >= 1930
     compiler.append(" 2019 / MSVC++ 17.").append(QString().asprintf("%d",(_MSC_VER % 10)));
 #elif _MSC_VER >= 1929
-  #if _MSC_FULL_VER >= 192930100
+#if _MSC_FULL_VER >= 192930100
     compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 18)));
-  #else
+#else
     compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 19)));
-  #endif
+#endif
 #elif _MSC_VER >= 1928
-  #if _MSC_FULL_VER >= 192829500
-    // once more again M$ version out of control :(
-    // https://developercommunity.visualstudio.com/t/the-169-cc-compiler-still-uses-the-same-version-nu/1335194#T-N1337120
+#if _MSC_FULL_VER >= 192829500
     compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 19)));
-  #else
+#else
     compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 20)));
-  #endif
+#endif
 #elif _MSC_VER < 1928
 #elif _MSC_VER >= 1920
     compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 20)));
