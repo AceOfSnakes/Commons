@@ -18,18 +18,18 @@ QString Commons::compilerQString() {
      * https://docs.microsoft.com/en-us/cpp/preprocessor/predefined-macros
      */
 #elif _MSC_VER >= 1930
-    compiler.append(" 2019 / MSVC++ 17.").append(QString().asprintf("%d",(_MSC_VER % 10)));
+    compiler.append(" 2019 / MSVC++ 17.0");
 #elif _MSC_VER >= 1929
 #if _MSC_FULL_VER >= 192930100
-    compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 18)));
+    compiler.append(" 2019 / MSVC++ 16.11");
 #else
-    compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 19)));
+    compiler.append(" 2019 / MSVC++ 16.10");
 #endif
 #elif _MSC_VER >= 1928
 #if _MSC_FULL_VER >= 192829500
-    compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 19)));
+    compiler.append(" 2019 / MSVC++ 16.9");
 #else
-    compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 20)));
+    compiler.append(" 2019 / MSVC++ 16.8");
 #endif
 #elif _MSC_VER < 1928
 #elif _MSC_VER >= 1920
