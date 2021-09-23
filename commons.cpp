@@ -13,11 +13,13 @@ QString Commons::compilerQString() {
     compiler.append(QString().asprintf("Compiler: gcc %s", __VERSION__));
 #elif defined _MSC_VER
     compiler.append("Compiler: Visual Studio");
-#if _MSC_VER >= 1929
+#if _MSC_VER >= 1930
+    compiler.append(" 2019 / MSVC++ 17.").append(QString().asprintf("%d",(_MSC_VER % 10)));
+#elif _MSC_VER >= 1929
   #if _MSC_FULL_VER >= 192930100
     compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 18)));
   #else
-    compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 18)));
+    compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 19)));
   #endif
 #elif _MSC_VER >= 1928
   #if _MSC_FULL_VER >= 192829500
