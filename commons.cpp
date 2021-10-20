@@ -31,7 +31,6 @@ QString Commons::compilerQString() {
 #else
     compiler.append(" 2019 / MSVC++ 16.8");
 #endif
-#elif _MSC_VER < 1928
 #elif _MSC_VER >= 1920
     compiler.append(" 2019 / MSVC++ 16.").append(QString().asprintf("%d",((_MSC_VER % 100) - 20)));
 #elif _MSC_VER > 1911
