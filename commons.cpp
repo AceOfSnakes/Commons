@@ -18,7 +18,7 @@ QString Commons::compilerQString() {
      * https://docs.microsoft.com/en-us/cpp/preprocessor/predefined-macros
      */
 #elif _MSC_VER >= 1930
-    compiler.append(" 2019 / MSVC++ 17.0");
+    compiler.append(" 2022 / MSVC++ 17.0");
 #elif _MSC_VER >= 1929
 #if _MSC_FULL_VER >= 192930100
     compiler.append(" 2019 / MSVC++ 16.11");
