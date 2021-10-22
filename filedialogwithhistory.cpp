@@ -98,13 +98,4 @@ QString FileDialogWithHistory::resolveSaveFileName(QWidget* parent, QString head
     return resolveFileName(parent, header, filters, alias, false, QString().append(""), box, prefferedName);
 }
 
-QString FileDialogWithHistory::resolveSaveFileName(QWidget* parent, QString header, QString &filters, QString alias,
-                                                  QString& label, QComboBox& combo) {
-    return resolveFileName(parent, header, filters, alias, false, label, combo, QString().append(""));
-}
-
-QString FileDialogWithHistory::resolveSaveFileName(QWidget* parent, QString header, QString &filters, QString alias) {
-    QComboBox box;
-    return resolveFileName(parent, header, filters, alias, false, QString().append(""), box, QString().append(""));
-}
 

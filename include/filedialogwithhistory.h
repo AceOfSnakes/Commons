@@ -14,13 +14,12 @@ public:
     FileDialogWithHistory();
     QString resolveLoadFileName(QWidget *parent, QString header, QString &filters, QString alias);
     QString resolveLoadFileName(QWidget *parent, QString header, QString &filters, QString alias,
-                                      QString &label, QComboBox &combo);
-    QString resolveSaveFileName(QWidget *parent, QString header, QString &filters, QString alias, QString &prefferedName);
+                                QString &label, QComboBox &combo);
+
     QString resolveSaveFileName(QWidget *parent, QString header, QString &filters, QString alias,
-                                      QString &label, QComboBox &combo, QString &prefferedName);
-    QString resolveSaveFileName(QWidget *parent, QString header, QString &filters, QString alias);
+                                QString &prefferedName= QString().append(""));
     QString resolveSaveFileName(QWidget *parent, QString header, QString &filters, QString alias,
-                                      QString &label, QComboBox &combo);
+                                QString &label, QComboBox &combo, QString &prefferedName = QString().append(""));
 
 };
 #endif // FILEDIALOGWITHHISTORY_H
