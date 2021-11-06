@@ -28,8 +28,12 @@ QString Commons::prettyProductName() {
 #define Q_WINVER(major, minor) (major << 8 | minor)
     switch (Q_WINVER(version.majorVersion(), version.minorVersion())) {
         case Q_WINVER(10, 0):
-            if(((workstation && version.microVersion() >= 21327) || version.microVersion() >= 17623) && !displayVersion.isEmpty())
-                return QString(workstation ? "Windows 11" : "Windows Server 2022").append(" Version ").append(displayVersion);
+            if (!displayVersion.isEmpty()) {
+                if(((workstation && version.microVersion() >= 21327) || version.microVersion() >= 17623))
+                    return QString(workstation ? "Windows 11" : "Windows Server 2022").append(" Version ").append(displayVersion);
+                else
+                    return QString(workstation ? "Windows 10" : "Windows Server 2016").append(" Version ").append(displayVersion);
+            }
     }
 #undef Q_WINVER
 
