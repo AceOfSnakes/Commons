@@ -1,4 +1,9 @@
 #include "commons.h"
+#include <QOperatingSystemVersion>
+#include <QSettings>
+#if defined(Q_OS_WIN)
+#include <qt_windows.h>
+#endif
 
 Commons::Commons() {
 
