@@ -4,6 +4,35 @@ Commons::Commons() {
 
 }
 
+QString Commons::prettyProductName() {
+#if defined(Q_OS_WIN)
+    QSettings m("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion",
+    QSettings::Registry64Format);
+
+    QString displayVersion = m.value("DisplayVersion").toString();
+
+    OSVERSIONINFOEX osver;
+    //::GetVersionEx(osver);
+    osver.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
+    if(!GetVersionEx((OSVERSIONINFO*)&osver)) {
+        return QSysInfo::prettyProductName();
+    }
+    const bool workstation = osver.wProductType == VER_NT_WORKSTATION;
+    qDebug() << workstation;
+    QOperatingSystemVersion version = QOperatingSystemVersion::current();
+    qDebug() << version << displayVersion << version.microVersion() << osver.dwMajorVersion << osver.dwMinorVersion;
+
+#define Q_WINVER(major, minor) (major << 8 | minor)
+    switch (Q_WINVER(version.majorVersion(), version.minorVersion())) {
+        case Q_WINVER(10, 0):
+            if(((workstation && version.microVersion() >= 21327) || version.microVersion() >= 17623) && !displayVersion.isEmpty())
+                return QString(workstation ? "Windows 11" : "Windows Server 2022").append(" Version ").append(displayVersion);
+    }
+#undef Q_WINVER
+
+#endif
+    return QSysInfo::prettyProductName();
+}
 
 QString Commons::compilerQString() {
     QString compiler;

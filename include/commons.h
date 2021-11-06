@@ -8,6 +8,7 @@ class Commons
 public:
     Commons();
     QString static compilerQString();
+    QString static prettyProductName();
 };
 
 #endif // COMMONS_H
