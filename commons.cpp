@@ -23,9 +23,7 @@ QString Commons::prettyProductName() {
         return QSysInfo::prettyProductName();
     }
     const bool workstation = osver.wProductType == VER_NT_WORKSTATION;
-    qDebug() << workstation;
     QOperatingSystemVersion version = QOperatingSystemVersion::current();
-    qDebug() << version << displayVersion << version.microVersion() << osver.dwMajorVersion << osver.dwMinorVersion;
 
 #define Q_WINVER(major, minor) (major << 8 | minor)
     switch (Q_WINVER(version.majorVersion(), version.minorVersion())) {
