@@ -29,7 +29,7 @@ QString Commons::prettyProductName() {
     switch (Q_WINVER(version.majorVersion(), version.minorVersion())) {
         case Q_WINVER(10, 0):
             if (!displayVersion.isEmpty()) {
-                if(((workstation && version.microVersion() >= 21327) || version.microVersion() >= 17623))
+                if(((workstation && version.microVersion() >= 21327) || (!workstation && version.microVersion() >= 17623)))
                     return QString(workstation ? "Windows 11" : "Windows Server 2022").append(" Version ").append(displayVersion);
                 else
                     return QString(workstation ? "Windows 10" : "Windows Server 2016").append(" Version ").append(displayVersion);
