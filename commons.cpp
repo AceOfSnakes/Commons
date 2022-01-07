@@ -42,14 +42,14 @@ QString Commons::prettyProductName() {
 #endif
     return QSysInfo::prettyProductName();
 }
-void Commons::moveWindow(QObject *obj, QEvent *event, QWidget *centralWidget, QMainWindow *window) {
+void Commons::moveWindow(QObject *obj, QEvent *event, QMainWindow *window) {
     static bool mouseDown = false;
     static int xRealPos = 0;
     static int yRealPos = 0;
 
     QScreen *screen = QApplication::screens().at(0);
     QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
-    if (obj->objectName() == centralWidget->objectName() && event->type() == QEvent::MouseButtonPress) {
+    if (obj->objectName() == window->objectName() && event->type() == QEvent::MouseButtonPress) {
         mouseDown = true;
         xRealPos = mouseEvent->globalPosition().x() - window->x();
         yRealPos = mouseEvent->globalPosition().y() - window->y();

@@ -11,7 +11,7 @@ public:
     Commons();
     QString static compilerQString();
     QString static prettyProductName();
-    void static moveWindow(QObject *obj, QEvent *event, QWidget *centralWidget, QMainWindow *window);
+    void static moveWindow(QObject *obj, QEvent *event, QMainWindow *window);
 };
 
 #endif // COMMONS_H
