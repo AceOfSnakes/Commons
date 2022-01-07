@@ -59,8 +59,8 @@ void Commons::moveWindow(QObject *obj, QEvent *event, QWidget *centralWidget, QM
         if (mouseDown) {
             int xPos = window->x() - (window->x() - mouseEvent->globalPosition().x()) - xRealPos;
             int yPos = window->y() - (window->y() - mouseEvent->globalPosition().y()) - yRealPos;
-            if(yPos + centralWidget->height() > screen->availableSize().height()) yPos = screen->availableSize().height() - centralWidget->height();
-            if(xPos + centralWidget->width() > screen->availableSize().width()) xPos = screen->availableSize().width() - centralWidget->width();
+            if(yPos + window->height() > screen->availableSize().height()) yPos = screen->availableSize().height() - window->height();
+            if(xPos + window->width() > screen->availableSize().width()) xPos = screen->availableSize().width() - window->width();
             if(xPos< 0) xPos=0;
             if(yPos< 0) yPos=0;
             window->move(xPos, yPos);
