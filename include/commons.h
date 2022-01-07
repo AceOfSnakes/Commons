@@ -2,6 +2,8 @@
 #define COMMONS_H
 
 #include <QString>
+#include <QEvent>
+#include <QMainWindow>
 
 class Commons
 {
@@ -9,6 +11,7 @@ public:
     Commons();
     QString static compilerQString();
     QString static prettyProductName();
+    void static moveWindow(QObject *obj, QEvent *event, QWidget *centralWidget, QMainWindow *window);
 };
 
 #endif // COMMONS_H

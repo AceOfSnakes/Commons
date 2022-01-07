@@ -1,6 +1,8 @@
 #include "commons.h"
 #include <QOperatingSystemVersion>
 #include <QSettings>
+#include <QMouseEvent>
+#include <QApplication>
 #if defined(Q_OS_WIN)
 #include <qt_windows.h>
 #endif
@@ -39,6 +41,31 @@ QString Commons::prettyProductName() {
 
 #endif
     return QSysInfo::prettyProductName();
+}
+void Commons::moveWindow(QObject *obj, QEvent *event, QWidget *centralWidget, QMainWindow *window) {
+    static bool mouseDown = false;
+    static int xRealPos = 0;
+    static int yRealPos = 0;
+
+    QScreen *screen = QApplication::screens().at(0);
+    QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+    if (obj->objectName() == centralWidget->objectName() && event->type() == QEvent::MouseButtonPress) {
+        mouseDown = true;
+        xRealPos = mouseEvent->globalPosition().x() - window->x();
+        yRealPos = mouseEvent->globalPosition().y() - window->y();
+    } else if (event->type() == QEvent::MouseButtonRelease) {
+        mouseDown = false;
+    } else if (event->type() == QEvent::MouseMove) {
+        if (mouseDown) {
+            int xPos = window->x() - (window->x() - mouseEvent->globalPosition().x()) - xRealPos;
+            int yPos = window->y() - (window->y() - mouseEvent->globalPosition().y()) - yRealPos;
+            if(yPos + centralWidget->height() > screen->availableSize().height()) yPos = screen->availableSize().height() - centralWidget->height();
+            if(xPos + centralWidget->width() > screen->availableSize().width()) xPos = screen->availableSize().width() - centralWidget->width();
+            if(xPos< 0) xPos=0;
+            if(yPos< 0) yPos=0;
+            window->move(xPos, yPos);
+        }
+    }
 }
 
 QString Commons::compilerQString() {
