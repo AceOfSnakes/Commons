@@ -98,7 +98,7 @@ QString Commons::compilerQString() {
                                        + (((int)__VSVERSION) > 16 ? 1 : 0)
                                        , __VSCMD_VER));
 #elif _MSC_VER >= 1930
-    compiler.append(" 2022 / MSVC++ ").append(#ifdef __VSCMD_VER __VSCMD_VER #elif QString().asprintf("17.%d",((_MSC_VER % 100) - 30)) #endif);
+    compiler.append(" 2022 / MSVC++ ").append(QString().asprintf("17.%d",((_MSC_VER % 100) - 30)));
 #elif _MSC_VER >= 1929
 
 #if _MSC_FULL_VER >= 192930100
