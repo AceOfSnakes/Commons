@@ -80,9 +80,27 @@ QString Commons::compilerQString() {
     /*
      * https://docs.microsoft.com/en-us/cpp/preprocessor/predefined-macros
      */
+#elif defined __VSCMD_VER
+    /*
+     * Special for Qt
+     * add this in .pro file
+     *
+     * VSCMD_VER = $$(VSCMD_VER)
+     * VSVERSION = $$(VisualStudioVersion)
+     *
+     * !isEmpty(VSCMD_VER) {
+     *    message("~~~ VSCMD_VER $$(VSCMD_VER) ~~~")
+     *    DEFINES += __VSCMD_VER=\\\"$$(VSCMD_VER)\\\"
+     *    DEFINES += __VSVERSION=$$(VisualStudioVersion)
+     * }
+     */
+    compiler.append(QString().asprintf(" %d / MSVC++ %s", 2013 + (((int)__VSVERSION)-13) * 2
+                                       + (((int)__VSVERSION) > 16 ? 1 : 0)
+                                       , __VSCMD_VER));
 #elif _MSC_VER >= 1930
-    compiler.append(" 2022 / MSVC++ 17.").append(QString().asprintf("%d",((_MSC_VER % 100) - 30)));
+    compiler.append(" 2022 / MSVC++ ").append(#ifdef __VSCMD_VER __VSCMD_VER #elif QString().asprintf("17.%d",((_MSC_VER % 100) - 30)) #endif);
 #elif _MSC_VER >= 1929
+
 #if _MSC_FULL_VER >= 192930100
     compiler.append(" 2019 / MSVC++ 16.11");
 #else
@@ -104,26 +122,12 @@ QString Commons::compilerQString() {
     compiler.append(" 2017 / MSVC++ 15.0");
 #elif _MSC_VER == 1900
     compiler.append(" 2015 / MSVC++ 14.0");
-#elif _MSC_VER == 1800
-    compiler.append(" 2013 / MSVC++ 12.0");
-#elif _MSC_VER == 1700
-    compiler.append(" 2012 / MSVC++ 11.0");
-#elif _MSC_VER == 1600
-    compiler.append(" 2010 / MSVC++ 10.0");
-#elif  _MSC_VER == 1500
-    compiler.append(" 2008 / MSVC++ 9.0");
-#elif  _MSC_VER == 1400
-    compiler.append(" 2005 / MSVC++ 8.0");
-#elif  _MSC_VER == 1310
-    compiler.append(" .NET 2003 / MSVC++ 7.1");
-#elif  _MSC_VER == 1300
-    compiler.append(" .NET 2002 / MSVC++ 7.0");
-#elif  _MSC_VER == 1300
-    compiler.append(" .NET 2002 / MSVC++ 7.0");
 #else
     compiler.append(", unrecognised version");
 #endif
+#ifndef QT_NO_DEBUG_OUTPUT
     compiler.append(QString().asprintf(" (_MSC_VER=%d, _MSC_FULL_VER=%d)", (int)_MSC_VER,(int)_MSC_FULL_VER));
+#endif
 #endif
     return compiler;
 }
