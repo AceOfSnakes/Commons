@@ -126,7 +126,7 @@ QString Commons::compilerQString() {
     compiler.append(", unrecognised version");
 #endif
 #ifndef QT_NO_DEBUG_OUTPUT
-    compiler.append(QString().asprintf(" (_MSC_VER=%d, _MSC_FULL_VER=%d)", (int)_MSC_VER,(int)_MSC_FULL_VER));
+    compiler.append(QString().asprintf("\n_MSC_VER=%d, _MSC_FULL_VER=%d", (int)_MSC_VER,(int)_MSC_FULL_VER));
 #endif
 #endif
     return compiler;
