@@ -1,14 +1,15 @@
 /* Black theme */
+
 QMainWindow,
 QDialog,
 QMenuBar, QMenu,
 QFrame[frameShape="HLine"], QFrame[frameShape="4"],
+QScrollArea,
 #centralWidget 
 {
     background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #555, stop: 1 #111); spacing 0px; transparent;
     color: white;
 }
-
 QScrollBar {
     border: 1px solid #555;
     background: transparent;
@@ -596,4 +597,17 @@ QScrollBar:veritical {
  QScrollBar::add-page, QScrollBar::sub-page {
      background: none;
  }
+
+
+
+
+QMainWindow
 */
+
+#statusDisplayWidget {
+    background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #999, stop: 1 #FFF); spacing 0px; transparent;
+    color: black;
+}
+QScrollArea {
+    background: transparent;
+} 
