@@ -606,6 +606,7 @@ QMainWindow
 
 #statusDisplayWidget {
     background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #999, stop: 1 #FFF); spacing 0px; transparent;
+    text-transform: uppercase;
     color: black;
 }
 QScrollArea {
