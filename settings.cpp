@@ -66,9 +66,15 @@ void Settings::saveSettings() {
     QSettings sets(qApp->organizationName(), qApp->applicationName());
     sets.beginGroup("global");
     sets.beginGroup("view");
-    sets.setValue("minimizeToTray", QVariant(ui->minimizeToTrayCheck->isChecked()));
-    sets.setValue("saveLatestDevice", QVariant(ui->rememberLatestCheck->isChecked()));
-    sets.setValue("devMode", QVariant(ui->developmentCheck->isChecked()));
+    if(ui->minimizeToTrayCheck->isVisible()) {
+        sets.setValue("minimizeToTray", QVariant(ui->minimizeToTrayCheck->isChecked()));
+    }
+    if(ui->rememberLatestCheck->isVisible()) {
+        sets.setValue("saveLatestDevice", QVariant(ui->rememberLatestCheck->isChecked()));
+    }
+    if(ui->developmentCheck->isVisible()) {
+        sets.setValue("devMode", QVariant(ui->developmentCheck->isChecked()));
+    }
     sets.endGroup();
     sets.endGroup();
 }
@@ -131,7 +137,7 @@ void Settings::on_saveTheme_clicked() {
 }
 
 
-void Settings::on_developmentCheck_stateChanged(int arg1) {
+void Settings::on_developmentCheck_stateChanged(int) {
     emit devModeChanged(ui->developmentCheck->isChecked());
 }
 
