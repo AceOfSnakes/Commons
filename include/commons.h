@@ -5,6 +5,12 @@
 #include <QEvent>
 #include <QMainWindow>
 
+#ifdef __linux__
+    #define WINDOW_FLAGS Qt::Drawer | Qt::Dialog
+#else
+    #define WINDOW_FLAGS Qt::Dialog
+#endif
+
 class Commons
 {
 public:
