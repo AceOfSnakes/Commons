@@ -128,6 +128,9 @@ QPushButton:pressed, QPushButton:checked {
 QPushButton:disabled {
         background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #ccc, stop: 1 #999);
         color: #777;
+       background-color:  rgba(128,128,128,25);
+      border-color: #777;
+
 }
 
 QPushButton#rc_btn_colorGreen, QPushButton#rc_btn_colorRed, QPushButton#rc_btn_colorYellow, QPushButton#rc_btn_colorBlue {
@@ -153,7 +156,9 @@ QPushButton#rc_btn_colorRed:pressed {
 
 QPushButton#rc_btn_colorRed:disabled{
        background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #ddd, stop: 1 #999);
-       color:red;
+       background-color:  rgba(128,128,128,25);
+      border-color: #777;
+
 }
 
 
@@ -173,6 +178,9 @@ QPushButton#rc_btn_colorGreen:pressed {
 
 QPushButton#rc_btn_colorGreen:disabled{
        background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #ddd, stop: 1 #999);
+       background-color:  rgba(128,128,128,25);
+      border-color: #777;
+
 }
 
 QPushButton#rc_btn_colorBlue:enabled {
@@ -190,6 +198,9 @@ QPushButton#rc_btn_colorBlue:pressed {
 
 QPushButton#rc_btn_colorBlue:disabled{
        background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #dddddd, stop: 1 #999999);
+       background-color:  rgba(128,128,128,25);
+      border-color: #777;
+
 }
 
 
@@ -208,6 +219,9 @@ QPushButton#rc_btn_colorYellow:pressed {
 
 QPushButton#rc_btn_colorYellow:disabled {
        background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #ddd, stop: 1 #999);
+       background-color:  rgba(128,128,128,25);
+      border-color: #777;
+
 }
 
 
