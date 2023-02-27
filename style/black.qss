@@ -11,7 +11,8 @@ QScrollArea,
     color: white;
 }
 QScrollBar {
-    border: 1px solid #555;
+    
+border: 1px solid #555;
     background: transparent;
     height: 20px;
     width: 20px;
@@ -124,17 +125,18 @@ QPushButton:pressed, QPushButton:checked {
         border-style: inset;
         background: qradialgradient( cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1, radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
 }
-
+QIcon {
+    opacity: 0.5;
+}
 QPushButton:disabled {
-        background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #ccc, stop: 1 #999);
-        color: #777;
        background-color:  rgba(128,128,128,25);
-      border-color: #777;
-
+      color: #777;
+   border:  1px solid #777;
 }
 
 QPushButton#rc_btn_colorGreen, QPushButton#rc_btn_colorRed, QPushButton#rc_btn_colorYellow, QPushButton#rc_btn_colorBlue {
-   border:  2px solid #bbb;
+    color: #777;
+
 }
 
 
@@ -633,6 +635,4 @@ QScrollArea {
     background: transparent;
 } 
 
-QMessageBox {
-    dialog-ok-icon: url(QStyle::SP_ArrowBack);
-}
+QDialogButtonBox { dialogbuttonbox-buttons-have-icons: 0; }
