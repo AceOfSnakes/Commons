@@ -125,9 +125,6 @@ QPushButton:pressed, QPushButton:checked {
         border-style: inset;
         background: qradialgradient( cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1, radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
 }
-QIcon {
-    opacity: 0.5;
-}
 QPushButton:disabled {
        background-color:  rgba(128,128,128,25);
       color: #777;
@@ -310,26 +307,24 @@ QDialogButtonBox QPushButton {
 /* =============================== */
 /* ========== QCheckBox ========== */
 /* =============================== */
+
+
 QCheckBox {
     color: #bbb; 
-/*    background: transparent;*/
-}
-
-QCheckBox::indicator {
-   border: 1px solid #777;
-}
-
-QCheckBox::indicator:checked {
-   background: #999;
-}
-
-QCheckBox::indicator:disabled {
-   background: #555; 
+    background: transparent;
 }
 
 QCheckBox::indicator:unchecked {
-   background: transparent;
+   border: 1px solid #777;
 }
+QCheckBox:disabled {
+   color: #555;
+}
+/*
+QCheckBox::indicator:unchecked {
+   background: transparent;   
+}
+*/
 
 /* =============================== */
 /* ========== QGroupBox ========== */
@@ -632,7 +627,8 @@ QMainWindow
     color: black;
 }
 QScrollArea {
-    background: transparent;
+    background: transparent;       ?
 } 
 
 QDialogButtonBox { dialogbuttonbox-buttons-have-icons: 0; }
+
