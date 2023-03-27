@@ -2,13 +2,16 @@
 
 QMainWindow,
 QDialog,
-QMenuBar, QMenu,
+QMenuBar,
 QFrame[frameShape="HLine"], QFrame[frameShape="4"],
-QScrollArea,
-#centralWidget 
+QScrollArea
 {
     background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #555, stop: 1 #111); spacing 0px; transparent;
     color: white;
+}
+QMenu {
+    background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #777, stop: 1 #333); spacing 0px; transparent;
+    color: #ccc;
 }
 QScrollBar {
     
@@ -62,20 +65,27 @@ QFrame[frameShape="VLine"], QFrame[frameShape="5"]
 }
 
 
-#statusDisplayWidget {
-}
 QGroupBox,
 QCheckBox {
      font: 13px Arial;
      color: #bbb;
 }
-QTextBrowser{
+QTextBrowser {
     background: white;
     color: black;
 }
-
+QMenu::item:disabled{
+    /*background: #ffffff; */
+    background: transparent;
+    color: #777;
+}
+/*QMenu::disabled {
+    text-decoration: none;
+    color: red;
+} */
 QMenu::active {
-    background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #999, stop: 1 #555); spacing 0px; transparent;
+    background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #aaa, stop: 1 #777); spacing 0px; transparent;
+    color: #ccc;
 }
 
 QFrame[frameShape="HLine"], QFrame[frameShape="4"] {
@@ -260,11 +270,6 @@ QLineEdit {
     margin:2px;
 }
 
-#centralWidget {
-    border:  1px solid #777777;
-     border-bottom-left-radius: 12px;
-     border-bottom-right-radius: 12px;
-}
 
 /* =============================== */
 /* ========= QPushButton ========= */
@@ -620,7 +625,25 @@ QScrollBar:veritical {
 
 QMainWindow
 */
+QScrollArea {
+    background: transparent;
+} 
 
+QDialogButtonBox { dialogbuttonbox-buttons-have-icons: 0; }
+
+/* BULLSHIT */
+
+#centralWidget 
+{
+    background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #555, stop: 1 #111); spacing 0px; transparent;
+    color: white;
+}
+
+#centralWidget {
+    border:  1px solid #777777;
+     border-bottom-left-radius: 12px;
+     border-bottom-right-radius: 12px;
+}
 
 #statusDisplayWidget {
     background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #999, stop: 1 #FFF); spacing 0px; transparent;
@@ -632,10 +655,16 @@ QMainWindow
     color: #777;
 }
 
-QScrollArea {
-    background: transparent;
-} 
-
-QDialogButtonBox { dialogbuttonbox-buttons-have-icons: 0; }
-
-
+/*#rc_btn_number0, 
+#rc_btn_number1, 
+#rc_btn_number2, 
+#rc_btn_number3, 
+#rc_btn_number4, 
+#rc_btn_number5, 
+#rc_btn_number6, 
+#rc_btn_number7, 
+#rc_btn_number8, 
+#rc_btn_number9 */
+#numWidget_internal QPushButton{
+    font-size:  19px;
+}
