@@ -353,7 +353,7 @@ QStatusBar{
     border-bottom:  1px solid #777777;
     border-left:  1px solid #777777;
     border-right:  1px solid #777777;
-
+    margin-BOTTOM: 1px;
     background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 0.35, stop: 0 #555, stop: 1 #111); spacing 0px; transparent;
 
     color:#999;
@@ -637,12 +637,10 @@ QDialogButtonBox { dialogbuttonbox-buttons-have-icons: 0; }
 {
     background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #555, stop: 1 #111); spacing 0px; transparent;
     color: white;
-}
-
-#centralWidget {
     border:  1px solid #777777;
-     border-bottom-left-radius: 12px;
-     border-bottom-right-radius: 12px;
+    margin-top: 1px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
 #statusDisplayWidget {
@@ -667,4 +665,7 @@ QDialogButtonBox { dialogbuttonbox-buttons-have-icons: 0; }
 #rc_btn_number9 */
 #numWidget_internal QPushButton{
     font-size:  19px;
+}                 
+#labelAuthor {
+border-radius:50%;
 }
