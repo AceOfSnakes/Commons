@@ -42,6 +42,7 @@ QString Commons::prettyProductName() {
 #endif
     return QSysInfo::prettyProductName();
 }
+#if QT_VERSION >= 0x060000
 void Commons::moveWindow(QObject *obj, QEvent *event, QMainWindow *window) {
     static bool mouseDown = false;
     static int xRealPos = 0;
@@ -67,7 +68,7 @@ void Commons::moveWindow(QObject *obj, QEvent *event, QMainWindow *window) {
         }
     }
 }
-
+#endif
 QString Commons::compilerQString() {
     QString compiler;
 #ifdef __clang_version__
