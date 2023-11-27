@@ -17,7 +17,9 @@ public:
     Commons();
     QString static compilerQString();
     QString static prettyProductName();
+#if QT_VERSION >= 0x060000
     void static moveWindow(QObject *obj, QEvent *event, QMainWindow *window);
+#endif
 };
 
 #endif // COMMONS_H
