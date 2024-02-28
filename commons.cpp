@@ -79,7 +79,7 @@ QString Commons::compilerQString() {
     compiler.append("Compiler: Visual Studio");
 #if 0    
     /*
-     * https://docs.microsoft.com/en-us/cpp/preprocessor/predefined-macros
+     * https://learn.microsoft.com/en-us/cpp/overview/compiler-versions?view=msvc-170#version-macros
      */
 #elif defined __VSCMD_VER
     /*
