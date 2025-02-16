@@ -643,15 +643,23 @@ QDialogButtonBox { dialogbuttonbox-buttons-have-icons: 0; }
     border-bottom-right-radius: 12px;
 }
 
-#statusDisplayWidget {
-    background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #999, stop: 1 #FFF); spacing 0px; transparent;
-  text-transform: uppercase;
+#statusDisplayWidget:enabled            {
+    background: white ; transparent;
+    text-transform: uppercase;
     color: black;
 }
-#statusDisplayWidget:disabled {
-    background: transparent;
-    color: #777;
+#statusDisplayWidget:disabled            {
+    background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #333, stop: 1 #999); spacing 0px; transparent;
+    text-transform: uppercase;
+    color: black;
 }
+
+/*
+#statusDisplayWidget:disabled {
+    background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #333, stop: 1 #999); spacing 0px; transparent;
+    color: #111;
+}
+*/
 
 /*#rc_btn_number0, 
 #rc_btn_number1, 
