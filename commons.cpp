@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #include "commons.h"
 #include <QOperatingSystemVersion>
 #include <QSettings>
@@ -26,6 +12,7 @@ Commons::Commons() {
 }
 
 QString Commons::prettyProductName() {
+#if QT_MAJOR_VERSION < 5
 #if defined(Q_OS_WIN)
     QSettings m("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion",
     QSettings::Registry64Format);
@@ -53,6 +40,7 @@ QString Commons::prettyProductName() {
     }
 #undef Q_WINVER
 
+#endif
 #endif
     return QSysInfo::prettyProductName();
 }
@@ -109,8 +97,7 @@ QString Commons::compilerQString() {
      *    DEFINES += __VSVERSION=$$(VisualStudioVersion)
      * }
      */
-    compiler.append(QString().asprintf(" %d / MSVC++ %s", 2013 + (((int)__VSVERSION)-13) * 2
-                                       + (((int)__VSVERSION) > 16 ? 1 : 0)
+    compiler.append(QString().asprintf(" %d / MSVC++ %s", ((int)__VSVERSION) == 16? 2019: ((int)__VSVERSION) == 17? 2022: 2026
                                        , __VSCMD_VER));
 #elif _MSC_VER >= 1930
     compiler.append(" 2022 / MSVC++ ").append(QString().asprintf("17.%d",((_MSC_VER % 100) - 30)));
