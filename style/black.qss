@@ -13,6 +13,24 @@ QMenu {
     background: qradialgradient( cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 #777, stop: 1 #333); spacing 0px; transparent;
     color: #ccc;
 }
+
+RemoteButton {
+    qproperty-clickGradient:
+    qradialgradient(
+        cx: 0.3, cy: -0.4, radius: 1.35,
+        fx: 0.3, fy: -0.4,
+        stop: 0 #fff,
+        stop: 1 #ddd
+    );
+    qproperty-hoverGradient:
+    qradialgradient(
+        cx: 0.3, cy: -0.4, radius: 1.35,
+        fx: 0.3, fy: -0.4,
+        stop: 0 #fff,
+        stop: 1 #bbb
+    );
+}
+
 QScrollBar {
     
 border: 1px solid #555;
