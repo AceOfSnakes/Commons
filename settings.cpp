@@ -36,11 +36,13 @@ Settings::Settings(QWidget *parent, bool controlsEnabled) :
     sets.beginGroup("view");
     ui->minimizeToTrayCheck->setChecked(sets.value("minimizeToTray", true).toBool());
     ui->rememberLatestCheck->setChecked(sets.value("saveLatestDevice", true).toBool());
+    ui->singleAppCheck->setChecked(sets.value("singleApplicationInstance", true).toBool());
     ui->developmentCheck->setChecked(sets.value("devMode", false).toBool());
     if(!controlsEnabled) {
          ui->minimizeToTrayCheck->setVisible(false);
          ui->rememberLatestCheck->setVisible(false);
          ui->developmentCheck->setVisible(false);
+         ui->singleAppCheck->setVisible(false);
     }
     sets.endGroup();
     sets.endGroup();
@@ -74,6 +76,9 @@ void Settings::saveSettings() {
     }
     if(ui->developmentCheck->isVisible()) {
         sets.setValue("devMode", QVariant(ui->developmentCheck->isChecked()));
+    }
+    if(ui->singleAppCheck->isVisible()) {
+        sets.setValue("singleApplicationInstance", QVariant(ui->singleAppCheck->isChecked()));
     }
     sets.endGroup();
     sets.endGroup();

@@ -87,6 +87,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="singleAppCheck">
+        <property name="text">
+         <string>Single application instance</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <property name="spacing">
          <number>0</number>
