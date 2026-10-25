@@ -1,6 +1,7 @@
 #include "commons.h"
 #include <QOperatingSystemVersion>
 #include <QSettings>
+#include <QWindow>
 #include <QMouseEvent>
 #include <QApplication>
 #if defined(Q_OS_WIN)
@@ -45,6 +46,7 @@ QString Commons::prettyProductName() {
     return QSysInfo::prettyProductName();
 }
 #if QT_VERSION >= 0x060000
+#if defined(Q_OS_WIN)
 void Commons::moveWindow(QObject *obj, QEvent *event, QMainWindow *window) {
     static bool mouseDown = false;
     static int xRealPos = 0;
@@ -70,6 +72,43 @@ void Commons::moveWindow(QObject *obj, QEvent *event, QMainWindow *window) {
         }
     }
 }
+#else
+void Commons::moveWindow(QObject *obj, QEvent *event, QMainWindow *window) {
+    if (obj->objectName() != window->objectName()) {
+        return;
+    }
+
+    if (event->type() == QEvent::MouseButtonPress) {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+        if (mouseEvent->button() == Qt::LeftButton) {
+
+            // 1. Boundary check using local coordinates to prevent layout shifts
+            if (!window->rect().contains(mouseEvent->pos())) {
+                return;
+            }
+
+            if (window->windowHandle()) {
+                window->clearFocus();
+
+                // 2. Handle Maximized Transitions Safely
+                if (window->isMaximized()) {
+                    window->showNormal();
+
+                    // Force the Wayland compositor to sync the non-maximized layout size
+                    // before committing to the mouse-drag handle operation.
+                    QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+                }
+
+                // 3. Stop Qt from locally dispatching or calculating custom moves
+                event->accept();
+
+                // 4. Delegate to the compositor cleanly
+                window->windowHandle()->startSystemMove();
+            }
+        }
+    }
+}
+#endif
 #endif
 QString Commons::compilerQString() {
     QString compiler;
